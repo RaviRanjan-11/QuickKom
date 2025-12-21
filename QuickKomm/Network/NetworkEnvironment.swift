@@ -15,6 +15,7 @@ public enum NetworkEnvironment {
 
 
 public protocol NetworkConfiguration {
+    var loggingEnabled: Bool { get }
     var environment: NetworkEnvironment { get }
     var baseURL: String { get }
     var commonHeaders: [String: String] { get }

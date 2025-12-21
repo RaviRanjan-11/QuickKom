@@ -9,16 +9,19 @@ import Foundation
 
 
 public final class DefaultNetworkConfiguration: NetworkConfiguration {
-
+    
+    public var loggingEnabled: Bool
     public let environment: NetworkEnvironment
     private let tokenProvider: AuthTokenProvider
 
     public init(
         environment: NetworkEnvironment,
-        tokenProvider: AuthTokenProvider
+        tokenProvider: AuthTokenProvider,
+        loggingEnabled:Bool = false
     ) {
         self.environment = environment
         self.tokenProvider = tokenProvider
+        self.loggingEnabled = loggingEnabled
     }
 
     public var baseURL: String {

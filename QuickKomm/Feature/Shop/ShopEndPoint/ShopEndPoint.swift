@@ -9,7 +9,6 @@ import Foundation
 
 
 public enum ShopEndpoint: Endpoint {
-    
     case fetchHomeWidget
     case fetchProduct(categoryId: String)
     case addToCart(productId: String)
@@ -22,10 +21,12 @@ extension ShopEndpoint {
         switch self {
         case .fetchHomeWidget:
             return "/item-categories/home-widget"
-        case .fetchProduct:
-            return "/item-categories"
+
+        case .fetchProduct(let categoryId):
+            return "/products/category/\(categoryId)"
+
         case .addToCart:
-            return "cart/add"
+            return "/cart/add"
         }
     }
 
@@ -39,14 +40,7 @@ extension ShopEndpoint {
     }
 
     public var queryItems: [URLQueryItem]? {
-        switch self {
-        case .fetchProduct(let categoryId):
-            return [
-                URLQueryItem(name: "categoryId", value: categoryId)
-            ]
-        default:
-            return nil
-        }
+        nil
     }
 
     public var body: Encodable? {
@@ -56,6 +50,10 @@ extension ShopEndpoint {
         default:
             return nil
         }
+    }
+
+    public var headers: [String: String]? {
+        nil
     }
 }
 

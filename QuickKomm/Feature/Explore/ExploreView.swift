@@ -10,7 +10,39 @@
 import SwiftUI
 
 struct ExploreView: View {
+    
+    
     var body: some View {
-        Text("Explore Screen")
+        
+        
+        ZStack {
+            
+            VStack {
+                SearchTextField(placeholder: "Search Store")
+                    .padding(.horizontal)
+            }
+            
+            
+        }
+        
+        
+        
+    }
+    @ViewBuilder
+    private var getView : some View {
+        
+        VStack {
+            
+            Text("Explore")
+                .font(.largeTitle)
+                .padding()
+        }
     }
 }
+
+
+
+#Preview {
+    ExploreView()
+}
+

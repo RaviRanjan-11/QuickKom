@@ -7,12 +7,28 @@
 
 import Foundation
 
-struct Product: Codable {
+struct ProductResponse: Decodable {
+    let success: Bool
+    let productData: ProductListContainer
+    
+    enum CodingKeys: String, CodingKey {
+        case success
+        case productData = "data"
+    }
+}
+
+struct ProductListContainer: Decodable {
+    let message: String
+    let data: [Product]
+    let total: Int
+}
+
+struct Product: Codable, Identifiable {
     let id, name, description, shortDescription: String
     let sku: String
     let itemCategory: ItemCategory
     let images: [String]
-    let thumbnail: String
+    let thumbnail: String?
     let videos: [String]
     let pricing: Pricing
     let variants: [String]

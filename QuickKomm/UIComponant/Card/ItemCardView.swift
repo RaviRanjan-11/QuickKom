@@ -7,40 +7,38 @@
 
 import SwiftUI
 
-
-struct ItemCard {
-    
-    let image: String
-    let title: String
-    let quantity:String
-    let price:String
-}
 struct ItemCardView: View {
-
-    let item: ItemCard
-
+    
+    let item: Product
+    
     var body: some View {
         
         VStack(spacing: 8) {
-            Image(item.image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 150, height: 100)
-                .cornerRadius(10)
+            
+            RemoteImageView(imageURL: item.thumbnail ?? "app_logo") { image in
+                
+                (image ?? Image("app_logo"))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150, height: 100)
+                    .cornerRadius(10)
+                
+            }
+            
             
             VStack(alignment: .leading, spacing: 4) {
                 
-                Text(item.title)
+                Text(item.name)
                     .font(.customfont(.semibold, fontSize: 25))
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                 
-                Text(item.quantity)
+                Text(item.stockQuantity.toString() + " left")
                     .font(.customfont(.semibold, fontSize: 15))
                     .foregroundStyle(.textTitle)
                 
                 HStack {
-                    Text(item.price)
+                    Text(item.pricing.basePrice.toString())
                         .font(.customfont(.semibold, fontSize: 20))
                     Spacer()
                     
@@ -59,7 +57,7 @@ struct ItemCardView: View {
                     
                 }
             }
-            .frame(maxWidth: .infinity)  // fill horizontal space
+            .frame(maxWidth: .infinity)
         }
         .frame(width: UIScreen.main.bounds.width * 0.35, height: 200)
         .cornerRadius(15)
@@ -72,6 +70,13 @@ struct ItemCardView: View {
     }
 }
 
-#Preview {
-    ItemCardView(item: ItemCard(image: "diet_coke", title: "Diet Coke", quantity: "330 Ml", price: "1.99$"))
+//#Preview {
+//    ItemCardView(item: pr)
+//}
+
+
+extension Int {
+    func toString() -> String {
+        return "\(self)"
+    }
 }

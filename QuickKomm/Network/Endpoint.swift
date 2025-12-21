@@ -13,19 +13,6 @@ public protocol Endpoint {
     var path: String { get }
     var method: HTTPMethod { get }
     var body: Encodable? { get }
-}
-
-
-
-public extension Endpoint {
-
-    var headers: [String: String]? {
-        nil
-    }
-
-    var queryItems: [URLQueryItem]? {
-        nil
-    }
-
-   
+    var headers: [String: String]? { get }
+    var queryItems: [URLQueryItem]? {get}
 }

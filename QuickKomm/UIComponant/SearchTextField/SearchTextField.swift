@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchTextField: View {
     
     @State private var searchedText: String = ""
-    var placeholder: String = ""
+    var placeholder: String = "Search"
     var body: some View {
         
         HStack {
@@ -19,7 +19,7 @@ struct SearchTextField: View {
                 .scaledToFit()
                 .frame(width: 20, height: 20)
             
-            TextField("Search", text: $searchedText)
+            TextField(placeholder, text: $searchedText)
                 .font(.customfont(.regular, fontSize: 16))
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
