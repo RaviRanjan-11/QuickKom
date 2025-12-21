@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Endpoint {
+public protocol APIEndPoint {
     
     var path: String { get }
     var method: HTTPMethod { get }

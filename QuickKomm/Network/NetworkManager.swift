@@ -21,7 +21,7 @@ public final class NetworkManager {
         self.service = DefaultNetworkService(config: config,)
     }
     
-    public func request<T: Decodable>(_ endpoint: Endpoint) async throws -> T {
+    public func request<T: Decodable>(_ endpoint: APIEndPoint) async throws -> T {
         try await service.request(endpoint)
     }
     

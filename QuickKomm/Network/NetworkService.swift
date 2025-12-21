@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol NetworkService {
-    func request<T: Decodable>(_ endpoint: Endpoint) async throws -> T
+    func request<T: Decodable>(_ endpoint: APIEndPoint) async throws -> T
 }
 
 
@@ -21,7 +21,7 @@ public final class DefaultNetworkService: NetworkService {
         self.config = config
     }
     
-    public func request<T: Decodable>(_ endpoint: Endpoint) async throws -> T {
+    public func request<T: Decodable>(_ endpoint: APIEndPoint) async throws -> T {
 
         
         

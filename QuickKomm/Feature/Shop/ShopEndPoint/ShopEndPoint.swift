@@ -8,7 +8,7 @@
 import Foundation
 
 
-public enum ShopEndpoint: Endpoint {
+public enum ShopEndpoint: APIEndPoint {
     case fetchHomeWidget
     case fetchProduct(categoryId: String)
     case addToCart(productId: String)

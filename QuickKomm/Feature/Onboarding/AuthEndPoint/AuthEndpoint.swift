@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum AuthEndpoint: Endpoint {
+public enum AuthEndpoint: APIEndPoint {
     
     case login(email: String, password: String)
     case register(name: String, email: String, password: String, userName: String)
