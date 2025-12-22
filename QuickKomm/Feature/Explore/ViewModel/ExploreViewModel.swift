@@ -14,7 +14,9 @@ final class ExploreViewModel: ObservableObject {
     @Published private(set) var categoriesData: [ProductCategoryData] = []
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var errorMessage: String? = nil
-    
+    @Published var naviagteToProduct: Bool = false
+    @Published var selectedCategoryId: String? = nil
+
     init() {}
     
     func fetchCategories() async {

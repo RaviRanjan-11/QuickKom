@@ -11,6 +11,7 @@ struct CategoryCard: View {
 
     var categoryImageUrl: String
     var categoryTitle: String
+    var onClick: () -> Void
 
     var body: some View {
         ZStack {
@@ -24,9 +25,13 @@ struct CategoryCard: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
             }
+            
             .padding()
         }
-        .frame(maxWidth: .infinity, maxHeight: 200) 
+        .onTapGesture {
+            onClick()
+        }
+        .frame(maxWidth: .infinity, maxHeight: 200)
         .cornerRadius(20)
     }
 
@@ -44,5 +49,5 @@ struct CategoryCard: View {
 
 
 #Preview {
-    CategoryCard(categoryImageUrl: "https://res.cloudinary.com/dkm654ciu/image/upload/v1766001040/products/Screenshot_2025_12_18_at_12_1766001037969_q65jpd.png",categoryTitle: "Meats")
+    CategoryCard(categoryImageUrl: "https://res.cloudinary.com/dkm654ciu/image/upload/v1766001040/products/Screenshot_2025_12_18_at_12_1766001037969_q65jpd.png",categoryTitle: "Meats", onClick: {})
 }

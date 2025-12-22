@@ -27,7 +27,7 @@ public final class DefaultNetworkConfiguration: NetworkConfiguration {
     public var baseURL: String {
         switch environment {
         case .development:
-            return "http://191.23.41.2:3000/quickkomm/v1"
+            return "http://131.163.1.24:3000/quickkomm/v1"
         case .staging:
             return "https://stage.api.com"
         case .production:

@@ -23,6 +23,10 @@ struct ExploreView: View {
         
         ZStack {
             
+            NavigationLink(destination: ProductsView(categoryId: viewModel.selectedCategoryId ?? ""), isActive: $viewModel.naviagteToProduct) {
+                EmptyView()
+            }
+            
             VStack {
                 
                 Text("Find Products")
@@ -39,8 +43,11 @@ struct ExploreView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         
                         ForEach(viewModel.categoriesData){ category in
-                            CategoryCard(categoryImageUrl: category.thumbnail, categoryTitle: category.title)
-                                .cornerRadius(20)
+                            CategoryCard(categoryImageUrl: category.thumbnail, categoryTitle: category.title) {
+                                viewModel.naviagteToProduct = true
+                                viewModel.selectedCategoryId = category.id
+                            }
+                            .cornerRadius(20)
                         }
                     }
                     .padding(20)
