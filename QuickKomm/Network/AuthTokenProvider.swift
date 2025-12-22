@@ -15,7 +15,7 @@ public final class DefaultAuthTokenProvider: AuthTokenProvider {
     public var accessToken: String? {
        let token = UserDefaults.standard.string(forKey: "token")
         if token == nil {
-            return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTNjNWU3OTk5MjZkYzExMzZjZWY2YWYiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInVzZXJOYW1lIjoiQWRtaW4gSHUiLCJpc0FkbWluIjp0cnVlLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjYyMTQ3MDIsImV4cCI6MTc2NjIxODMwMn0.ICvuj-9fNlZFbcTqCGzyKw_DUjsFWrqzWx7coHrfnfs"
+            return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTQ2NWY2M2U0NWY0ZTU5MjRhM2FlYzMiLCJlbWFpbCI6ImFkbWluQHF1aWNrLmNvbSIsInVzZXJOYW1lIjoiQWRtaW4iLCJpc0FkbWluIjp0cnVlLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjY0MjAyODgsImV4cCI6MTc2NjY3OTQ4OH0.geNGLqhAWQR9dqQxarHnUrfQXplxCOsTsKFsz85FfGM"
         }
         return token
     }

@@ -13,6 +13,11 @@ struct ExploreView: View {
     
     
     @StateObject var viewModel: ExploreViewModel = ExploreViewModel()
+    
+    let columns = [
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 40)
+    ]
     var body: some View {
         
         
@@ -26,6 +31,22 @@ struct ExploreView: View {
                 SearchTextField(placeholder: "Search Store")
                     .padding(.horizontal)
                     .padding(.top)
+                
+                
+                
+                ScrollView( showsIndicators: false) {
+                    
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        
+                        ForEach(viewModel.categoriesData){ category in
+                            CategoryCard(categoryImageUrl: category.thumbnail, categoryTitle: category.title)
+                                .cornerRadius(20)
+                        }
+                    }
+                    .padding(20)
+                    
+                }
+               
             }
             
             
@@ -37,6 +58,8 @@ struct ExploreView: View {
         
         
     }
+    
+    
     @ViewBuilder
     private var getView : some View {
         
