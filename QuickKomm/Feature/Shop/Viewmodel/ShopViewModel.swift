@@ -31,6 +31,7 @@ final class ShopViewModel: ObservableObject {
     // MARK: - Private functions
 
     private func fetchHomeWidget() async throws {
+        
         let response: HomeWidgetResponse =
             try await NetworkManager.shared.request(ShopEndpoint.fetchHomeWidget)
         self.homeWidget = response.data

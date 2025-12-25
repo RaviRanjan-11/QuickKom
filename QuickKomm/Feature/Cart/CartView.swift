@@ -11,3 +11,9 @@ struct CartView: View {
         Text("Cart Screen")
     }
 }
+
+
+
+#Preview {
+    CartView()
+}

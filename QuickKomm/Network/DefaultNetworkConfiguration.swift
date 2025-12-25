@@ -27,11 +27,11 @@ public final class DefaultNetworkConfiguration: NetworkConfiguration {
     public var baseURL: String {
         switch environment {
         case .development:
-            return "http://131.163.1.24:3000/quickkomm/v1"
+            return "http://191.164.5.4:3000/quickkomm/v1"
         case .staging:
             return "https://stage.api.com"
         case .production:
-            return "https://api.com"
+            return "https://quickkom-backend.onrender.com/quickkomm/v1"
         case .simulator:
             return "http://localhost:3000/quickkomm/v1"
         }

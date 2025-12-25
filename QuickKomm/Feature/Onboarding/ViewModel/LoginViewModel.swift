@@ -53,7 +53,6 @@ final class LoginViewModel: ObservableObject {
 
             print("User logged in:", response)
             
-            AppDefaults.isLoggedIn = true
 
             AppDefaults.userId = response.data?.id ?? ""
             AppDefaults.userName = response.data?.userName ?? ""

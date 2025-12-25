@@ -27,9 +27,6 @@ final class ExploreViewModel: ObservableObject {
             self.categoriesData = productCategoryModelData.productCategoryies.data
         }
         
-        
-        
-        
     }
     
     // MARK: - Execute wrapper

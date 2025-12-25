@@ -17,7 +17,7 @@ public final class NetworkManager {
     private let isLoggingEnabled: Bool = true
     
     private init() {
-        let config = DefaultNetworkConfiguration(environment: .simulator, tokenProvider: DefaultAuthTokenProvider(),loggingEnabled: isLoggingEnabled)
+        let config = DefaultNetworkConfiguration(environment: .production, tokenProvider: DefaultAuthTokenProvider(),loggingEnabled: isLoggingEnabled)
         self.service = DefaultNetworkService(config: config,)
     }
     

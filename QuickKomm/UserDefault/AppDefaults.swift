@@ -2,30 +2,31 @@
 //  AppDefaults.swift
 //  QuickKomm
 //
-//  Created by Ravi Ranjan on 20/12/25.
+//  Created by Ravi Ranjan on 26/12/25.
 //
 
 import Foundation
-struct AppDefaults {
+import SwiftUI
 
-    @UserStorage(key: .isLoggedIn, defaultValue: false)
-    static var isLoggedIn: Bool
+enum AppDefaults {
 
-    @UserStorage(key: .userId, defaultValue: "")
-    static var userId: String
-
-    @UserStorage(key: .userName, defaultValue: "")
-    static var userName: String
-
-    @UserStorage(key: .fullName, defaultValue: "")
-    static var fullName: String
-
-    @UserStorage(key: .email, defaultValue: "")
-    static var email: String
-
-    @UserStorage(key: .token, defaultValue: "")
-    static var token: String
-
-    @UserStorage(key: .refreshToken, defaultValue: "")
-    static var refreshToken: String
+    @AppStorage(UserDefaultKey.userId.key)
+    static var userId: String = ""
+    
+    @AppStorage(UserDefaultKey.userName.key)
+    static var userName: String = ""
+    
+    @AppStorage(UserDefaultKey.fullName.key)
+    static var fullName: String = ""
+    
+    @AppStorage(UserDefaultKey.email.key)
+    static var email: String = ""
+    
+    @AppStorage(UserDefaultKey.token.key)
+    static var token: String = ""
+    
+    @AppStorage(UserDefaultKey.refreshToken.key)
+    static var refreshToken: String = ""
+ 
 }
+

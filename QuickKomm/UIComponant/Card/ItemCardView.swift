@@ -29,7 +29,7 @@ struct ItemCardView: View {
             VStack(alignment: .leading, spacing: 4) {
                 
                 Text(item.name)
-                    .font(.customfont(.semibold, fontSize: 25))
+                    .font(.customfont(.semibold, fontSize: 16))
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                 
@@ -38,8 +38,8 @@ struct ItemCardView: View {
                     .foregroundStyle(.textTitle)
                 
                 HStack {
-                    Text(item.pricing.basePrice.toString())
-                        .font(.customfont(.semibold, fontSize: 20))
+                    Text(item.pricing.basePrice.toString() + " ₹")
+                        .font(.customfont(.semibold, fontSize: 18))
                     Spacer()
                     
                     Button {

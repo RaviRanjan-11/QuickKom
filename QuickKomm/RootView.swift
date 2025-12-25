@@ -7,19 +7,22 @@
 
 import SwiftUI
 
+
 struct RootView: View {
 
     @AppStorage(UserDefaultKey.isLoggedIn.key)
     private var isLoggedIn: Bool = false
-
+    
     var body: some View {
-        if isLoggedIn {
-            HeroTabContainer()
-        } else {
-            NavigationView {
+        NavigationView {
+            if isLoggedIn {
+                HeroTabContainer()
+            } else {
                 GetStartedScreen()
             }
         }
+        .navigationViewStyle(.stack)
     }
 }
+
 

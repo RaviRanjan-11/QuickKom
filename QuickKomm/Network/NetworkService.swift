@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol NetworkService {
+    
     func request<T: Decodable>(_ endpoint: APIEndPoint) async throws -> T
 }
 
@@ -57,18 +58,16 @@ public final class DefaultNetworkService: NetworkService {
         let (data, response) = try await URLSession.shared.data(for: request)
 
        
-        guard let http = response as? HTTPURLResponse else {
+        guard let httpResponse = response as? HTTPURLResponse else {
             throw APIError.noData
         }
         
-        if config.loggingEnabled {
-            logResponse(data: data, response: http)
-        }
+        config.loggingEnabled ? logResponse(data: data, response: httpResponse) : ()
+        
+      
+        try validateResponseStatus(httpResponse)
 
-        guard 200..<300 ~= http.statusCode else {
-            throw APIError.serverError(http.statusCode)
-        }
-
+        
         do {
             let decoded = try JSONDecoder().decode(T.self, from: data)
             config.loggingEnabled ? print(prettyJSON(data)) : ()
@@ -156,5 +155,30 @@ public final class DefaultNetworkService: NetworkService {
         return String(data: prettyData, encoding: .utf8) ?? ""
     }
 
+    
+    func validateResponseStatus(_ response: HTTPURLResponse) throws {
+        switch response.statusCode {
+        case 200..<300:
+            return
 
+        case 401:
+                       
+            UserDefaults.standard.set(false, forKey: UserDefaultKey.isLoggedIn.key)
+            NotificationCenter.default.post(
+                name: .unauthorized,
+                object: nil
+            )
+
+            throw APIError.unauthorized
+
+        default:
+            throw APIError.serverError(response.statusCode)
+        }
+    }
+
+
+}
+
+extension Notification.Name {
+    static let unauthorized = Notification.Name("unauthorized")
 }

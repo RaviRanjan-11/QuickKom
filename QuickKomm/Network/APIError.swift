@@ -13,7 +13,7 @@ public enum APIError: Error, LocalizedError {
     case serverError(Int)
     case unknown(Error)
     case noData
-    
+    case unauthorized
     public var errorDescription: String? {
         switch self {
         case .invalidURL: return "Invalid URL."
@@ -21,6 +21,7 @@ public enum APIError: Error, LocalizedError {
         case .serverError(let code): return "Server error with code: \(code)"
         case .unknown(let err): return err.localizedDescription
         case .noData: return "No data returned from server."
+        case .unauthorized: return "Unauthorized"
         }
     }
 }

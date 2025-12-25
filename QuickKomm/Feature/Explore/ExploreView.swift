@@ -55,31 +55,13 @@ struct ExploreView: View {
                 }
                
             }
-            
-            
         }
         .task {
             await viewModel.fetchCategories()
         }
-        
-        
-        
     }
     
-    
-    @ViewBuilder
-    private var getView : some View {
-        
-        VStack {
-            
-            Text("Explore")
-                .font(.largeTitle)
-                .padding()
-        }
-    }
 }
-
-
 
 #Preview {
     ExploreView()
